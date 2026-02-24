@@ -178,6 +178,8 @@ def crear_driver():
         opts.add_experimental_option("excludeSwitches", ["enable-automation"])
         opts.add_experimental_option("useAutomationExtension", False)
 
+        # Chromium en Debian/Docker
+        opts.binary_location = "/usr/bin/chromium"
         from selenium.webdriver.chrome.service import Service as ChromeService
         service = ChromeService(executable_path="/usr/bin/chromedriver")
         driver = webdriver.Chrome(service=service, options=opts)
