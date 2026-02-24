@@ -224,6 +224,13 @@ def ejecutar_bot():
             logger.info("🌐 Accediendo a Bet365...")
             time.sleep(14)
 
+            # ── DIAGNÓSTICO: ver qué carga realmente en el servidor ──
+            logger.info(f"📄 TÍTULO DE PÁGINA: {driver.title}")
+            logger.info(f"🔗 URL ACTUAL: {driver.current_url}")
+            page_snippet = driver.page_source[:800].replace('\n', ' ')
+            logger.info(f"📃 CÓDIGO HTML (primeros 800 chars): {page_snippet}")
+            # ── FIN DIAGNÓSTICO ──────────────────────────────────────
+
             # Aceptar cookies si aparece
             try:
                 btn = driver.find_element(By.XPATH, "//div[contains(text(),'Aceptar') or contains(text(),'Accept')]")
